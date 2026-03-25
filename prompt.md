@@ -44,7 +44,7 @@ Total: 43 countries.
 
 ### Variables to Analyze per Country
 
-Assess each country against six variables. Score every variable using the Status Logic defined below.
+Assess each country against seven variables. Score every variable using the Status Logic defined below.
 
 1. **Power Density** — Can the country's electrical grid deliver >=120 kW per rack to a data center facility? Distinguish between two fundamentally different failure modes:
    - **Grid bottleneck** (e.g., Frankfurt, Dublin, Amsterdam): The electrical grid itself is saturated — no new connections available regardless of facility readiness. This is a structural constraint that takes years to resolve.
@@ -61,9 +61,33 @@ Assess each country against six variables. Score every variable using the Status
 
 4. **Network Connectivity** — Does the country have proximity to major Internet Exchanges, high fiber density, and availability of InfiniBand/RoCEv2 interconnect at scale? Consider submarine cable landing points, IX membership counts, and latency to major European hubs.
 
-5. **Legislation & Regulation** — Are there active or pending legislative impediments? Consider: data center construction moratoriums (Amsterdam since 2019, Dublin until Dec 2025, Frankfurt de facto), energy consumption caps, water usage restrictions (Thames Water in UK), zoning limitations, the EU Energy Efficiency Directive (EED), Germany's EnEfG, and data sovereignty mandates that affect site selection.
+5. **Legislation & Regulation** — Assess the full legislative landscape, covering both **impediments** and **enablers**:
+   - **Impediments:** Data center construction moratoriums (Amsterdam since 2019, Dublin until Dec 2025, Frankfurt de facto), energy consumption caps, water usage restrictions (Thames Water in UK), zoning limitations, the EU Energy Efficiency Directive (EED), Germany's EnEfG, mandatory energy performance reporting (e.g., Sweden's July 2025 data center energy disclosure law), waste heat recovery mandates, and data sovereignty mandates that affect site selection.
+   - **Enablers:** National **AI, digital sovereignty, or HPC roadmaps** and how they intersect with **EU AI Act** implementation; **regulatory sandboxes** (sectoral or innovation-led); **streamlined permitting** or zoning for data centers and high-load industrial sites where policy explicitly seeks investment; **electricity-tax, levy, or efficiency-linked incentives** for qualifying compute or R&D loads (verify per jurisdiction); **renewable procurement and PPA rules**—regulatory renewable-share expectations, guarantees of origin, or facilitation of corporate PPAs for large consumers; **institutional anchors** such as national AI councils, digital-ministry directorates, or PM-office coordination units. Keep examples **generic in the prompt**; when you source data points, **vary countries** (e.g. France, Germany, Finland, Netherlands, Portugal, Italy, Czech Republic) rather than repeating the same pair of member states.
+   - A country with active moratoriums but strong enabling legislation should be rated differently from one with moratoriums and no policy response. Weigh the net effect.
 
 6. **Sovereign AI Deployment** — Does this country operate its own national AI compute infrastructure domestically, or must it deploy abroad? Pay special attention to the **Sovereign AI Paradox**: major economies (notably Germany) that want domestic AI compute sovereignty but cannot physically deploy it due to grid constraints, forcing relocation of AI training workloads to Finland, Norway, or Sweden. This is creating a **strategic bifurcation** in European AI geography — latency-tolerant training migrates north to where power is available, while latency-sensitive inference stays in established metros. Note which countries are *sources* vs *destinations* of this migration. Reference the EU's EuroHPC AI Factories program (3 rounds: Dec 2024, Mar 2025, Oct 2025, plus Antenna nodes) as the primary coordinated sovereign AI effort.
+
+7. **Public Funding & Incentives for AI Infrastructure** — Build the **investment case**: capital-intensive AI facilities (power, DLC, interconnect) are partly de-risked by stacked EU and national instruments. Do not treat “support” as IPCEI-only. Assess how much **real money and approved projects** exist—not slogans—and map them to **sovereign compute**, **commercial colocation**, or **both** where evidence allows.
+
+   **A. EU coordinated instruments (treat as separate lenses; cite phase: announced, call, approved, operational):**
+   - **IPCEI family (state aid):** IPCEI-CIS (Next Generation Cloud Infrastructure and Services), IPCEI-AST (Advanced Semiconductor Technologies), and the AI / compute-infrastructure continuum tracks (e.g. CIC-oriented calls). Note member-state approval status, national project sponsors, and whether benefits flow to cloud/AI services vs. silicon only. *Illustrative:* seven states were in the approved IPCEI-CIS core; other members have run expressions of interest for AST / AI / continuum tracks; federated platforms such as **Fact8ra** show how multi-country IPCEI can anchor an AI-factory-style service layer (e.g. Sweden via RISE).
+   - **Horizon Europe:** Competitive R&I funding relevant to AI scale-up—trustworthy AI, HPC software stacks, edge–cloud integration, digital twins, testbeds, and public–private pilots. Record significant coordinator or beneficiary presence **in this country** where it signals sustained ecosystem and talent around large-scale compute.
+   - **Digital Europe Programme (DEP):** Deployments that build EU-wide digital capacity (e.g. cybersecurity, data spaces, digital innovation capacity) where they intersect with AI adoption and infrastructure roadmaps at national level.
+   - **EuroHPC and AI Factories:** Co-funded **sovereign AI training** sites and rounds (including Antenna nodes). This is the clearest EU-branded **“AI factory”** line item—tie physical deployment and cross-border hosting to **variable 6 (Sovereign AI Deployment)**; here score **funding commitment, governance, and timeline** for the country’s role (host, partner, or absent).
+   - **Trans-European infrastructure & recovery:** **CEF Digital** (and related connectivity backbones), and **Recovery and Resilience Facility (RRF)** or cohesion allocations where national plans explicitly fund digital infrastructure, HPC access, or AI-relevant energy/grid enablers. Use these when they materially support the **conditions** for AI-scale data centers (grid, fibre, public compute access), not generic “digital” mentions.
+
+   **B. National and sub-national levers:**
+   - Budget lines for national supercomputers, sovereign AI platforms, or regional **AI factory / innovation hub** programmes; investment grants for large industrial or energy-intensive sites; **tax** measures (energy, investment credits, accelerated depreciation) aimed at data centers or R&D-heavy compute; regional development banks or special economic zones.
+
+   **C. Catalyzed private capital:**
+   - Large hyperscaler or AI-cloud commitments **explicitly tied** to public support (PPAs facilitated by policy, approved state aid packages, grid expansion agreements). Use **one or two named examples across the whole region** in the rationale (e.g. Nordic renewable-backed expansions, Iberian green-energy deals)—avoid anchoring the section on a single jurisdiction.
+
+   **D. NPO-led AI institutes, think-tank ecosystems, and government working bodies (qualitative):**
+   - **National NPO / PPP “AI hub” organisations** that drive strategy, literacy, and industry–government dialogue—not a substitute for funded programmes in A–C, but evidence of **institutional momentum** and policy fluency. Examples to research per country: **[AI Sweden](https://ai.se/)**; **[AI² (AI for All of Ireland)](https://aiai.ie/)**; **[AI Ireland](https://aiireland.ie/)** and other national AI associations or non-profit alliances; analogous bodies elsewhere (e.g. national AI councils hosted by industry or academia). Note whether they publish adoption roadmaps, run skills programmes, or lobby on **infrastructure and sovereign compute**.
+   - **Government-sponsored AI working groups, councils, and task forces:** Inter-ministerial committees, national AI councils, advisory boards to ministries, or parliamentary inquiry groups with a formal mandate. Capture **who chairs them**, **whether outputs are binding or budget-linked**, and whether recommendations have translated into **grants, procurement, or factory programmes** (tie back to A–B when possible).
+
+   **Scoring:** **Green** — Credible **stack** of EU and/or national funding with **allocated budgets, approved projects, or operational outcomes** that clearly relate to AI-scale compute or its prerequisites (sovereign factories, IPCEI projects, major Horizon/DEP footprints, or strong national grant + tax programmes). **Orange** — Participation in early phases only (EoI, unpublished strategies, single instrument without funding), or funding that is real but **not yet** tied to deployable infrastructure. **Red** — No meaningful public instruments beyond generic AI narratives. **Grey** — Insufficient data to trace money and projects. **D alone never warrants Green**—use it to enrich rationale and to separate “paper strategy” from countries where NPOs and **official working groups** actively align stakeholders around infrastructure and funding.
 
 ---
 
@@ -108,6 +132,9 @@ These are the primary operators with confirmed or near-term operational 120kW+ D
 - **Nscale** — Operational DLC facilities in UK (Loughton, 50 MW scalable to 90 MW). Deploying in Portugal (Start Campus, Sines — 12,600 GB300 GPUs, 150 MW Phase 1) and Iceland (Verne partnership — 4,600 GB300 GPUs). Building UK's largest NVIDIA AI supercomputer with Microsoft (23,000 GB300 GPUs).
 - **CoreWeave** — Operational liquid-cooled NVIDIA Blackwell racks (~130kW/rack) in Sweden and Spain. $2.2B Nordic expansion program. Facilities also in Norway.
 - **Verne Global** — 140 MW campus in Iceland (40 acres, 100% renewable). Partnership with Nscale for Blackwell Ultra deployment. NVIDIA DGX authorized.
+- **AlloComp** — European (Ireland-based) solutions partner for optimised AI infrastructure: integrated AI-ready systems, direct-to-chip and immersion liquid cooling, vendor-agnostic software optimisation, and on-demand / colocation paths — [allocomp.com](https://allocomp.com/). Use as a research lead for **European enterprise and DC** deployment patterns, partner ecosystems (e.g. Dell), and liquid-cooled rollouts (e.g. regional case studies and events), distinct from hyperscale facility operators above.
+- **IPCEI-CIS (Next Generation Cloud Infrastructure and Services)** — €1.2B in public funding + €1.4B private investment across 7 member states (France, Germany, Hungary, Italy, Netherlands, Poland, Spain). 120+ industrial partners building an interoperable European data processing ecosystem. Includes **Fact8ra**, Europe's first federated AI factory — a multi-tenant AI-as-a-Service platform spanning 8 member states (including Sweden via RISE) for deploying open-source LLMs along the HPC-cloud-telco continuum.
+- **IPCEI AST/AI/CIC** — Upcoming IPCEI tracks on Advanced Semiconductor Technologies, AI Services, and Compute Infrastructure Continuum. Ireland (via DETE) and 10 other EU member states have issued calls for expressions of interest. These represent the next wave of EU state-aid-eligible AI infrastructure investment.
 - **EuroHPC AI Factories** — EU sovereign AI compute program across 19+ sites:
   - Round 1 (Dec 2024): Finland, Germany, Greece, Italy, Luxembourg, Spain, Sweden
   - Round 2 (Mar 2025): Czech Republic, Ireland, Poland, Slovenia
@@ -156,7 +183,7 @@ These are the primary operators with confirmed or near-term operational 120kW+ D
 #### Detail Screen — Triggered by Country Click
 
 - Country name and overall status prominently displayed.
-- One section per variable (Power, Cooling, Structural, Network, Legislation, Sovereign AI), each showing:
+- One section per variable (Power, Cooling, Structural, Network, Legislation, Sovereign AI, Public Funding & Incentives for AI Infrastructure), each showing:
     - Status color and label.
     - Rationale paragraph.
     - 3-5 sourced data points with citations.
@@ -172,7 +199,7 @@ These are the primary operators with confirmed or near-term operational 120kW+ D
 
 ### Execution Sequence
 
-**Phase 1 — Data Assembly:** Research and assemble the structured data for all 43 countries across all 6 variables before writing any HTML. Apply the Critical Evaluation Rules during this phase. Output this as a JavaScript object/JSON embedded in the file. For each variable per country, include: status (green/orange/red/grey), rationale (1-2 sentences), dataPoints array (each with text, source, year, url), and timeline (for orange/red).
+**Phase 1 — Data Assembly:** Research and assemble the structured data for all 43 countries across all 7 variables before writing any HTML. Apply the Critical Evaluation Rules during this phase. Output this as a JavaScript object/JSON embedded in the file. For each variable per country, include: status (green/orange/red/grey), rationale (1-2 sentences), dataPoints array (each with text, source, year, url), and timeline (for orange/red).
 
 **Phase 2 — Dashboard Build:** Render the dashboard consuming the Phase 1 data. All visual elements must be driven by the data object so the dataset can be updated independently.
 
